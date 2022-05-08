@@ -26,8 +26,7 @@ module.exports.register = (req, res) => {
             })
 
         ).then(({ token, user }) => {
-            res
-                .cookie("userToken", token, {
+            res.cookie("userToken", token, {
                     httpOnly: true
                 })
                 .json({ msg: "success!", user, token });
@@ -47,25 +46,27 @@ module.exports.updateUser = (request, response) => {
 
 
 
-// module.exports.login = async(req, res) => {
-//     const user = await User.findOne({ email: req.body.email })
-//         .catch(err => res.status(400).json(err));
-//     if (user === null) {
-//         return res.sendStatus(400);
-//     }
-//     const correctPassword = await bcrypt.compare(req.body.password, user.password);
-//     if (!correctPassword) {
-//         return res.sendStatus(400);
-//     }
-//     const userToken = jwt.sign({
-//         id: user._id
-//     }, process.env.FIRST_SECRET_KEY);
-//     res
-//         .cookie("userToken", userToken, {
-//             httpOnly: true
-//         })
-//         .json({ msg: "success!", user: user, token: userToken })
-// }
+module.exports.login = (req, res) => {
+    User.findOne({ email: req.body.email })
+    .then(user => {
+        if (user === null) {
+            res.json({msg:"Invalid Email"});
+        }else{
+            bcrypt.compare(req.body.password, user.password)
+            .then(correctPassword =>{
+                if (correctPassword) {
+                    res.cookie("userToken", jwt.sign({_id:user._id}, process.env.SECRET_KEY), {httpOnly: true})
+                    .json({ msg: "success!" })
+                }else{
+                    res.json({msg:"Invalid Password"});
+                }
+            })
+            .catch(err => response.json(err))
+        }
+    })
+    .catch(err => response.json(err))
+
+}
 
 module.exports.logout = (req, res) => {
     res.clearCookie("usertoken");

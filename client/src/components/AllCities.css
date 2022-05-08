@@ -1,0 +1,11 @@
+.immmg:hover img {
+    transform: scale(1.2);
+    z-index: 2;
+    transition: 2s;
+
+}
+
+.immmg{
+    overflow: hidden;
+    
+}
