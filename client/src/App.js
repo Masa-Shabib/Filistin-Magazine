@@ -1,22 +1,26 @@
 
 import  React from 'react';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  // useNavigate
+} from "react-router-dom";
 import './App.css';
 import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
+import Signin from './components/Signin';
+
 function App() {
   return (
-    <React.Fragment>
-    <CssBaseline />
-    <Container minWidth="sm" maxWidth="lg">
-      <Box sx={{ bgcolor: '#c1daff', height: '100vh' ,padding:"20px" }}  >
-      <h1>Filistin</h1>
-      <div style={{margin:"0 auto",backgroundColor:"black"}} >
-      <img alt='' src='https://pbs.twimg.com/media/FCcg1JzWYAMBkEo?format=jpg&name=large' style={{height:"auto",width:"100%",maxWidth:"600px",}} ></img>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Navigate to="/register"></Navigate>}/>
+          <Route  path="/register" exact element={<Signin />}/>
+        </Routes>
       </div>
-      </Box>
-    </Container>
-  </React.Fragment>
+    </BrowserRouter>
   );
 }
 
