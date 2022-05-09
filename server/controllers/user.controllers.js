@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 require("dotenv").config();
 
 module.exports.findUser = (req, res) => {
-    User.findOne({ _id: req.params.id }).populate("posts").populate("comments")
+    User.findOne({ _id: req.params.id })
         .then(user => res.json(user))
         .catch(err => res.json(err))
 }
@@ -31,7 +31,7 @@ module.exports.register = (req, res) => {
                 })
                 .json({ msg: "success!", user, token });
         })
-        .catch(err => res.status(400).json(err));
+        .catch(err => res.json(err));
 }
 
 /// update
@@ -43,7 +43,6 @@ module.exports.updateUser = (request, response) => {
     .then(updatedPerson => response.json(updatedPerson))
     .catch(err => response.json(err))
 }
-
 
 
 module.exports.login = (req, res) => {
@@ -69,17 +68,18 @@ module.exports.login = (req, res) => {
 }
 
 module.exports.logout = (req, res) => {
-    res.clearCookie("usertoken");
-    res.json({ msg: "User Logged Out" });
-    res.sendStatus(200);
+    console.log("hiiii")
+    res.clearCookie('usertoken');
+    res.cookie("usertoken", jwt.sign({_id:""}, process.env.SECRET_KEY),{
+        httpOnly:true,
+        maxAge: 0
+    }).json({ msg: "User Logged Out" });
+
 }
 
-module.exports.authenticate = (req, res, next) => {
-    jwt.verify(req.cookies.userToken, process.env.SECRET_KEY, (err, payload) => {
-        if (err) {
-            res.status(401).json({ verified: false })
-        } else {
-            next();
-        }
-    });
+module.exports.getLoggedUser = (req, res) => {
+    const decodedJWT= jwt.decode(req.cookies.userToken, {complete:true});
+    User.findById(decodedJWT.payload._id)
+    .then(user=>res.json({user}))
+    .catch(err => res.json(err))
 }

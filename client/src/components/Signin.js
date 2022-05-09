@@ -8,14 +8,14 @@ import background from "../download.jpg";
 const Signin = ()=>{
    console.log(background)
     return(
-        <div className="row" style={{ backgroundImage:`url(${background})` }}>
+        <div className="row" style={{ backgroundImage:`url(${background})` , height:"95vh"}}>
             <h1>Welcom to our magazine</h1>
-            <Col className="col">
+            <Row className="justify-content-md-center">
+            <Col className="col-6 m-3" >
                 <Register></Register>
-            </Col>
-            <Col className="col">
                 <Login></Login>
             </Col>
+            </Row>
         </div>
     )
 }

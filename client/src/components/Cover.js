@@ -1,31 +1,22 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import './cover.css';
+import axios from 'axios'
 import {TweenMax, Circ,Expo,Power2,Power3} from 'gsap'
-const Cover = () => {
+const Cover = (props) => {
+
+  // useEffect(()=>{
+  //   axios.get('http://localhost:8000/api/loggedUser', {withCredentials:true})
+  //   .then(res=>{console.log(res)
+  //     props.setLoggedUser(res.data.user)
+  //   })
+  //   .catch(err=>console.log(err))
+  // },[])
   return (
-    // <div> 
-    //     <h1>Filistin</h1>
-    //     <div style={{margin:"0 auto",backgroundColor:"black"}} >
-    //         <img alt='' src='https://pbs.twimg.com/media/FCcg1JzWYAMBkEo?format=jpg&name=large' style={{height:"auto",width:"100%",maxWidth:"600px",}} ></img>
-    //     </div> 
-    // </div>
+
     
     <div className="wrapper">
     <div className="left"></div>
     <div className="right"></div>
-
-    <nav className="nav">
-      <ul>
-        <li className="logo">unsplash</li>
-        <li className="menu"><i className="fa fa-bars"></i></li>
-        <li className="collection">collection</li>
-        <li className="explore">explore</li>
-        <li className="search">search</li>
-        <li className="profile">
-          <div className="img"></div>
-        </li>
-      </ul>
-    </nav>
 
     <div className="content">
       <div className="img-wrapper">
@@ -34,7 +25,7 @@ const Cover = () => {
 
       <div className="info">
         <ul>
-          <li>unsplash.com</li>
+          <li>unsplash.com </li>
           <li>@karinates</li>
           <li>karinates.com</li>
           <li><i className="fa fa-share-alt"></i></li>
@@ -42,15 +33,15 @@ const Cover = () => {
       </div>
 
       <div className="text">
-        <h1>karina tes</h1>
-        <p>Fashion Photographer</p>
+        <h1>Filistine  </h1>
+        <p>Palestenian Magazine</p>
       </div>
 
-      <div className="name">karina tes</div>
+      <div className="name">Filistine</div>
 
       <div className="bottomnav">
         <ul>
-          <li>profile</li>
+          <li>profile  </li>
           <li>portfolio</li>
           <li>contact</li>
         </ul>
