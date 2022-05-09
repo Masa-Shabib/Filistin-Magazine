@@ -13,11 +13,11 @@ const FormVillages = () =>{
         desc:"",
         link1:"",
         area:"",
-        city:""
     })
     const navigate = useNavigate();
     const [errors, setErrors] = useState([]); 
     const [cities, setCities] = useState([])
+    const [citId, setCitId] = useState([])
   useEffect(() => {
     axios.get('http://localhost:8000/api/city' )
         .then(res => setCities(res.data))
@@ -31,7 +31,7 @@ const FormVillages = () =>{
     }
     const onSubmitHandler = e =>{
         e.preventDefault();
-        axios.post('http://localhost:8000/api/village', formInfo, {withCredentials:true})
+        axios.post('http://localhost:8000/api/village/'+citId, formInfo, {withCredentials:true})
 
         .then((res) => {
             console.log("Response, ", res);
@@ -134,10 +134,9 @@ const FormVillages = () =>{
                     />
                     <label htmlFor="floatingPasswordCustom">Area</label>
 
-                    <Form.Select aria-label="Default select example" className="mb-3"
-    >                   
-                        <option>Open this select menu</option>
-                        <option value="1">One</option>
+                    <Form.Select aria-label="Default select example" className="mb-3" onChange={e=> setCitId(e.target.value)}
+    >                   {cities.map((city, index) => <option key={index} value={city._id} name="city">{city.name}</option>)}
+                       
                     </Form.Select>
                 </Form.Floating>
                 <Button variant="primary" type="submit">

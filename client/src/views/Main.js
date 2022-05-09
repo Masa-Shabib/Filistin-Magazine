@@ -14,7 +14,7 @@ const Main = () => {
             console.log(msg);
             console.log(messages);
             setMessages(prevMessages => {
-                return [...prevMessages, msg];
+                return [...prevMessages, msg.msgData];
             })
         });
         return () => socket.disconnect(true);

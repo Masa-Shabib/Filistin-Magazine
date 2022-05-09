@@ -25,8 +25,8 @@ function App() {
   return (
     <React.Fragment>
     <CssBaseline />
-    <Container minWidth="sm" maxWidth="lg">
-      <Box sx={{ height: '100vh' ,padding:"20px" ,overflowY: 'auto'}}  >
+    <Container minWidth="sm" maxWidth="lg" > 
+      <Box sx={{bgcolor:"#F6FFF8", height: '100vh'  ,overflowY: 'auto',outline:'2px solid #6B9080',margin:"10px" }}  >
       
       <BrowserRouter>
     <div className="App">
