@@ -15,14 +15,6 @@ const FormVillages = () =>{
         area:"",
         city:""
     })
-    // const [name, setName] = useState("");
-    // const [location, setLocation] = useState("");
-    // const [img1, setImg1] = useState("");
-    // const [img2, setImg2] = useState("");
-    // const [desc, setDesc] = useState("");
-    // const [link1, setLink1] = useState("");
-    // const [area, setArea] = useState("");
-    // const [villages, setVillages] = useState("");
     const navigate = useNavigate();
     const [errors, setErrors] = useState([]); 
     const changehandler = (e)=>{

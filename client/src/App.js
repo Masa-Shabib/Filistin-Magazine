@@ -34,8 +34,8 @@ function App() {
       <Route  path="/Filistin/register" exact element={<Signin />}/>
       <Route  path="/Filistin/city/:id" exact element={<City />}/>
       <Route  path="/Filistin/test" exact element={<FormTest  />}/>
-      <Route  path="/city/create" exact element={<FormCities />}/>
-      <Route  path="/village/create" exact element={<FormVillages />}/>
+      <Route  path="/Filistin/city/create" exact element={<FormCities />}/>
+      <Route  path="/Filistin/village/create" exact element={<FormVillages />}/>
       </Routes>
     </div>
   </BrowserRouter>

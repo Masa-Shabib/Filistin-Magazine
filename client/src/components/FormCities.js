@@ -1,10 +1,26 @@
-import React,{useState} from "react";
+import React,{useEffect,useState} from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { Form, Button } from "react-bootstrap";
 
 const FormCities = () =>{
+    const [loggedUser, setLoggedUser]= useState(null)
+    useEffect(()=>{
+        axios.get('http://localhost:8000/api/loggedUser', {withCredentials:true})
+        .then(res=>{console.log(res)
+          setLoggedUser(res.data.user)
+        })
+        .catch(err=>{console.log(err)
+            navigate("/Filistin")})
+      },[])
+      const logOut=()=>{
+        axios.get('http://localhost:8000/api/logout', {withCredentials:true})
+        .then(res=>{console.log(res)
+            navigate("/Filistin")
+        })
+        .catch(err=>console.log(err))
+      }
     const [formInfo, setFormInfo] = useState({
         name:"",
         location:"",
@@ -49,7 +65,8 @@ const FormCities = () =>{
         })            
     }
     return (
-        <Form onSubmit={onSubmitHandler}>
+        <div>
+        {loggedUser?<Form onSubmit={onSubmitHandler}>
             {errors.map((err, index) => <p key={index}>{err}</p>)}
             <Form.Floating className="mb-3">
                 {errors.firstName? <p className="text-danger"> errors.firstName.message</p>: ""}
@@ -138,6 +155,9 @@ const FormCities = () =>{
                     Submit
                 </Button>
           </Form>      
+        :<p>Login first</p>}
+        
+        </div>
     )
 }
 

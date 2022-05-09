@@ -78,7 +78,7 @@ const Test = () => {
             sx={{height: '40vh', display: 'flex', p: 1, bgcolor: 'background.paper', borderRadius: 1,margin:"10px" }}
         >
             <img style={{flexGrow: 1,width:'40%',height:'auto'}} src={`${city.img2}`}/>
-            <Item sx={{width:'50%'}}>
+            <Item sx={{width:'50%',overflow:"auto"}}>
               <p style={{ display:'flex', flexDirection:'row'}}>{city.desc}</p>
               <a href={city.link1}> Extra link</a>
               </Item>
