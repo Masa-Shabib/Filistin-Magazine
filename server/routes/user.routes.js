@@ -8,4 +8,5 @@ module.exports = app => {
     app.get("/api/user/:id", UserController.findUser);
     app.put("/api/user/:id", UserController.updateUser);
     app.get("/api/logout", UserController.logout);
-}
+    app.get("/api/loggedUser", UserController.getLoggedUser);
+} 

@@ -2,23 +2,30 @@ import React, { useState } from "react";
 import {  Form, Button, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios'
-
+import { useNavigate, Link } from 'react-router-dom';
 const Login = () =>{
     const [formInfo, setFormInfo] = useState({
         email:"",
-        Password:""
+        password:""
     })
+    const [errors, setErrors]= useState([]);
+    const navigate = useNavigate();
     const changehandler = (e)=>{
         setFormInfo({
             ...formInfo,
             [e.target.name]:e.target.value
         })
     }
-    const register = (e)=>{
+    const Login = (e)=>{
         e.preventDefault();
-        axios.post('http://localhost:8000/api/login', formInfo, {withCredentials:true})
+        axios.post('http://localhost:8000/api/login', formInfo,{withCredentials:true})
         .then(res=>{
-            console.log(res)
+            if(res.data.msg === "success!"){
+                navigate("/Filistin")
+                
+            }else {
+                setErrors(res.data.msg)
+            }
         })
         .catch(err=>{
             console.log(err)
@@ -28,6 +35,7 @@ const Login = () =>{
     return (
      <div>
         <h2>Login</h2>
+        {errors?<p className="text-danger">{errors}</p>:""}
          <Form onSubmit={Login}>
             <Form.Floating className="mb-3">
 
@@ -37,8 +45,6 @@ const Login = () =>{
                 placeholder="name@example.com"
                 name="email"
                 onChange={changehandler}
-
-
                 />
                 <label htmlFor="floatingInputCustom">Email</label>
             </Form.Floating>
@@ -54,7 +60,7 @@ const Login = () =>{
                 />
                 <label htmlFor="floatingPasswordCustom">Password</label>
             </Form.Floating>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" style={{margin:"0 40%"}}>
                     Login 
                 </Button>
           </Form>      
