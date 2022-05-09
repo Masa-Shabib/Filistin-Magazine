@@ -21,7 +21,7 @@ const AllCities = () => {
     <Box sx={{  height: '100vh'}}>
       <ImageList variant="masonry" cols={3} gap={18}>
         {cities.map((item) => (
-          <ImageListItem className='immmg' key={item.img} style={{transition:"1s"}}>
+          <ImageListItem className='immmg' key={item._id} style={{transition:"1s"}}>
             <img
               src={`${item.img1}?w=248&fit=crop&auto=format`}
               srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}

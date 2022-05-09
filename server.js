@@ -17,4 +17,26 @@ require('./server/routes/user.routes')(app);
 require('./server/routes/cities.routes')(app);
 require('./server/routes/villages.routes')(app);
     
-app.listen(8000, () => console.log("The server is all fired up on port 8000"));
+const server = app.listen(8000, () =>
+    console.log('The server is all fired up on port 8000')
+);
+
+const io = require('socket.io')(server, { cors: true });
+
+io.on("connection", socket => {
+    console.log(socket.id);
+    console.log("Nice to meet you, Shake Hand ?");
+    socket.emit("Greeting", "Hi everyone");
+
+    socket.on("new-client-logon", (data) => {
+        console.log(data);
+        console.log(data.sender);
+        console.log(data.message);
+        io.emit("message-from-server", data);
+    })
+
+    socket.on("new-client-msg", (data) => {
+        console.log(data);
+        io.emit("message-from-server", data);
+    })
+})

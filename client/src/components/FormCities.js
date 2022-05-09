@@ -2,7 +2,7 @@ import React,{useEffect,useState} from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Row } from "react-bootstrap";
 
 const FormCities = () =>{
     const [loggedUser, setLoggedUser]= useState(null)
@@ -52,112 +52,114 @@ const FormCities = () =>{
 
         .then((res) => {
             console.log("Response, ", res);
-            navigate("/city");
+            navigate("/Filistin");
           })
         .catch(err=>{
-            const errorResponse = err.response.data.errors; // Get the errors from err.response.data
-            const errorArr = []; // Define a temp error array to push the messages in
-            for (const key of Object.keys(errorResponse)) { // Loop through all errors and get the messages
-                errorArr.push(errorResponse[key].message)
-            }
+            console.log(err)
+            
             // Set Errors
-            setErrors(errorArr);
+            setErrors(err.response.data.errors);
         })            
     }
     return (
         <div>
-        {loggedUser?<Form onSubmit={onSubmitHandler}>
-            {errors.map((err, index) => <p key={index}>{err}</p>)}
-            <Form.Floating className="mb-3">
-                {errors.firstName? <p className="text-danger"> errors.firstName.message</p>: ""}
-                <Form.Control
+        {loggedUser? <Row className="justify-content-center">
+            <h1>Create City</h1>
+            <Form onSubmit={onSubmitHandler} className=" col-6 m-3 " >
+                {/* {errors.map((err, index) => <p key={index}>{err}</p>)} */}
+                <Form.Floating className="mb-3">
+                    <Form.Control
+                        id="floatingInputCustom"
+                        type="name"
+                        placeholder="name@example.com"
+                        name="name"
+                            onChange={changehandler} />
+                        <label htmlFor="floatingInputCustom">Name</label>
+                        {errors.name?<p className="text-danger">{errors.name.message}</p>:""}
+                </Form.Floating>
+                <Form.Floating className="mb-3">
+                
+                    <Form.Control
                     id="floatingInputCustom"
-                    type="name"
+                    type="location"
                     placeholder="name@example.com"
-                    name="name"
-                        onChange={changehandler}                    />
-                    <label htmlFor="floatingInputCustom">Name</label>
-            </Form.Floating>
-            <Form.Floating className="mb-3">
-            {errors.location? <p className="text-danger"> errors.location.message</p>: ""}
-                <Form.Control
-                id="floatingInputCustom"
-                type="location"
-                placeholder="name@example.com"
-                name="location"
-                    onChange={changehandler}  />
-                <label htmlFor="floatingInputCustom">Location</label>
-            </Form.Floating>
-            <Form.Floating className="mb-3">
-            {errors.img1? <p className="text-danger"> errors.img1.message</p>: ""}
-                <Form.Control
-                id="floatingInputCustom"
-                type="url"
-                placeholder="name@example.com"
-                name="img1"
-                onChange={changehandler}
+                    name="location"
+                        onChange={changehandler}  />
+                    <label htmlFor="floatingInputCustom">Location</label>
+                    {errors.location? <p className="text-danger"> {errors.location.message}</p>: ""}
+                </Form.Floating>
+                <Form.Floating className="mb-3">
+                
+                    <Form.Control
+                    id="floatingInputCustom"
+                    type="url"
+                    placeholder="name@example.com"
+                    name="img1"
+                    onChange={changehandler}
 
-                />
-                <label htmlFor="floatingInputCustom">Image1</label>
-            </Form.Floating>
-            <Form.Floating >
-            {errors.img2? <p className="text-danger"> errors.img2.message</p>: ""}
-                <Form.Control
-                className="mb-3"
-                id="floatingimg2Custom"
-                type="url"
-                placeholder="img2"
-                name="img2"
-                onChange={changehandler}
-                />
-                <label htmlFor="floatingimg2Custom">Image2</label>
-            </Form.Floating>
-            <Form.Floating>
-            {errors.desc? <p className="text-danger">errors.desc.message</p>: ""}
-                <Form.Control
-                className="mb-3"
-                id="floatingPasswordCustom"
-                type="desc"
-                placeholder="desc"
-                onChange={changehandler}                
-                name="desc"
+                    />
+                    <label htmlFor="floatingInputCustom">Image1</label>
+                    {errors.img1? <p className="text-danger"> {errors.img1.message}</p>: ""}
+                </Form.Floating>
+                <Form.Floating >
+                    <Form.Control
+                    className="mb-3"
+                    id="floatingimg2Custom"
+                    type="url"
+                    placeholder="img2"
+                    name="img2"
+                    onChange={changehandler}
+                    />
+                    <label htmlFor="floatingimg2Custom">Image2</label>
+                </Form.Floating>
+                <Form.Floating>
+                
+                    <Form.Control
+                    className="mb-3"
+                    id="floatingPasswordCustom"
+                    type="desc"
+                    placeholder="desc"
+                    onChange={changehandler}                
+                    name="desc"
+                    />
+                    <label htmlFor="floatingPasswordCustom">Desc</label>
+                    {errors.desc? <p className="text-danger">{errors.desc.message}</p>: ""}
+                </Form.Floating>
+                <Form.Floating>
+                {errors.link1? <p className="text-danger">errors.link1.message</p>: ""}
+                    <Form.Control
+                    className="mb-3"
+                    id="floatingPasswordCustom"
+                    type="url"
+                    placeholder="link1"
+                    onChange={changehandler}               
+                    name="link1"
 
-                />
-                <label htmlFor="floatingPasswordCustom">Desc</label>
-            </Form.Floating>
-            <Form.Floating>
-            {errors.link1? <p className="text-danger">errors.link1.message</p>: ""}
-                <Form.Control
-                className="mb-3"
-                id="floatingPasswordCustom"
-                type="url"
-                placeholder="link1"
-                onChange={changehandler}               
-                name="link1"
+                    />
+                    <label htmlFor="floatingPasswordCustom">Link</label>
+                </Form.Floating>
+                <Form.Floating>
+                {errors.area? <p className="text-danger">errors.area.message</p>: ""}
+                    <Form.Control
+                    className="mb-3"
+                    id="floatingPasswordCustom"
+                    type="numb"
+                    placeholder="Number"
+                    onChange={changehandler}       
+                    name="area"
 
-                />
-                <label htmlFor="floatingPasswordCustom">Link</label>
-            </Form.Floating>
-            <Form.Floating>
-            {errors.area? <p className="text-danger">errors.area.message</p>: ""}
-                <Form.Control
-                className="mb-3"
-                id="floatingPasswordCustom"
-                type="numb"
-                placeholder="Number"
-                onChange={changehandler}       
-                name="area"
-
-                />
-                <label htmlFor="floatingPasswordCustom">Area</label>
-            </Form.Floating>
-            <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-          </Form>      
+                    />
+                    <label htmlFor="floatingPasswordCustom">Area</label>
+                </Form.Floating>
+                <Button variant="primary" type="submit">
+                    Create
+                    </Button>
+            </Form> 
+        </Row>         
         :<p>Login first</p>}
-        
         </div>
+             
+               
     )
 }
 
