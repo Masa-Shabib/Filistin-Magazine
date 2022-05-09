@@ -69,11 +69,8 @@ module.exports.login = (req, res) => {
 
 module.exports.logout = (req, res) => {
     console.log("hiiii")
-    res.clearCookie('usertoken');
-    res.cookie("usertoken", jwt.sign({_id:""}, process.env.SECRET_KEY),{
-        httpOnly:true,
-        maxAge: 0
-    }).json({ msg: "User Logged Out" });
+    res.clearCookie('userToken')
+    .json({ msg: "User Logged Out" });
 
 }
 
