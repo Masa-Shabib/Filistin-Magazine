@@ -12,6 +12,8 @@ import {
 import AllCities from './components/AllCities';
 import Cover from './components/Cover';
 import Signin from './components/Signin';
+import FormCities from './components/FormCities';
+import FormVillages from './components/FormVillages';
 function App() {
   return (
     <React.Fragment>
@@ -21,11 +23,13 @@ function App() {
       
       <BrowserRouter>
     <div className="App">
-    <Routes>
-      <Route exact path="/Filistin/cities" element={ <AllCities />} />
-      <Route exact path="/Filistin" element={ <Cover />} />
-      <Route path="/" element={<Navigate to="/register"></Navigate>}/>
-      <Route  path="/register" exact element={<Signin />}/>
+      <Routes>
+        <Route exact path="/Filistin/cities" element={ <AllCities />} />
+        <Route exact path="/Filistin" element={ <Cover />} />
+        <Route path="/" element={<Navigate to="/register"></Navigate>}/>
+        <Route  path="/register" exact element={<Signin />}/>
+        <Route  path="/city/create" exact element={<FormCities />}/>
+        <Route  path="/village/create" exact element={<FormVillages />}/>
       </Routes>
     </div>
   </BrowserRouter>

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/filistinddb', {
+mongoose.connect('mongodb://127.0.0.1/filistinddb', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
