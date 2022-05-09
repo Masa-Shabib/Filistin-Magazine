@@ -44,7 +44,6 @@ const Register = () =>{
         <h2>Registration</h2>
          <Form onSubmit={register}>
             <Form.Floating className="mb-3">
-                
                 <Form.Control
                     id="floatingInputCustom"
                     type="name"

@@ -16,6 +16,8 @@ import FormCities from './components/FormCities';
 import FormVillages from './components/FormVillages';
 import City from './components/City';
 import FormTest from './components/FormTest';
+import UpdateCities from './components/UpdateCities';
+import UpdateVillages from './components/UpdateVillages';
 import './App.css';
 function App() {
 
@@ -36,7 +38,9 @@ function App() {
       <Route  path="/Filistin/test" exact element={<FormTest  />}/>
       <Route  path="/city/create" exact element={<FormCities />}/>
       <Route  path="/village/create" exact element={<FormVillages />}/>
-      </Routes>
+      <Route path="/city/:id/edit" element={<UpdateCities/>}/>
+      <Route path="/village/:id/edit" element={<UpdateVillages/>}/>
+    </Routes>
     </div>
   </BrowserRouter>
       </Box>
