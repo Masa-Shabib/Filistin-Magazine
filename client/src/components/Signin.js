@@ -12,7 +12,7 @@ const Signin = ()=>{
             <h1>Welcom to our magazine</h1>
             <Row className="justify-content-md-center">
             <Col className="col-6 m-3" >
-                <Register></Register>
+                <Register ></Register>
                 <Login></Login>
             </Col>
             </Row>

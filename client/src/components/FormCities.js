@@ -62,6 +62,7 @@ const FormCities = () =>{
         })            
     }
     return (
+
         <div>
         {loggedUser? <Row className="justify-content-center">
             <h1>Create City</h1>
