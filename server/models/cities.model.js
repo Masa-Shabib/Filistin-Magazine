@@ -34,6 +34,10 @@ const CitySchema = new mongoose.Schema({
     },link1: {
         type: String,
     },area: {
+        required: [
+            true,
+            "City Area is required"
+        ],
         type: Number,
     },villages : [
         {type: mongoose.Schema.Types.ObjectId,ref:'Village'}

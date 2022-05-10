@@ -3,8 +3,28 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Row } from "react-bootstrap";
+import Header from "./Header";
 
 const FormVillages = () =>{
+
+
+    const [loggedUser, setLoggedUser]= useState(null)
+    useEffect(()=>{
+        axios.get('http://localhost:8000/api/loggedUser', {withCredentials:true})
+        .then(res=>{console.log(res)
+          setLoggedUser(res.data.user)
+        })
+        .catch(err=>{navigate("/Filistin")})
+      },[])
+      const logOut=()=>{
+        axios.get('http://localhost:8000/api/logout', {withCredentials:true})
+        .then(res=>{console.log(res)
+            navigate("/Filistin")
+        })
+        .catch(err=>console.log(err))
+      }
+
+
     const [formInfo, setFormInfo] = useState({
         name:"",
         location:"",
@@ -38,22 +58,21 @@ const FormVillages = () =>{
             navigate("/Filistin");
           })
         .catch(err=>{
-            const errorResponse = err.response.data.errors; // Get the errors from err.response.data
-            const errorArr = []; // Define a temp error array to push the messages in
-            for (const key of Object.keys(errorResponse)) { // Loop through all errors and get the messages
-                errorArr.push(errorResponse[key].message)
-            }
+            console.log(err)
+            
             // Set Errors
-            setErrors(errorArr);
-        })            
+            setErrors(err.response.data.errors);
+        })       
     }
     return (
+        <div>
+        {loggedUser? 
         <Row className="justify-content-center">
+            <Header/>
                         <h1>Create Village</h1>
             <Form onSubmit={onSubmitHandler} className=" col-6 m-3 ">
-                {errors.map((err, index) => <p key={index}>{err}</p>)}
                 <Form.Floating className="mb-3">
-                    {errors.firstName? <p className="text-danger"> errors.firstName.message</p>: ""}
+                 
                     <Form.Control
                         id="floatingInputCustom"
                         type="name"
@@ -61,9 +80,10 @@ const FormVillages = () =>{
                         name="name"
                             onChange={changehandler}                    />
                         <label htmlFor="floatingInputCustom">Name</label>
+                        {errors.name?<p className="text-danger">{errors.name.message}</p>:""} 
                 </Form.Floating>
                 <Form.Floating className="mb-3">
-                {errors.location? <p className="text-danger"> errors.location.message</p>: ""}
+                 
                     <Form.Control
                     id="floatingInputCustom"
                     type="location"
@@ -71,9 +91,10 @@ const FormVillages = () =>{
                     name="location"
                         onChange={changehandler}  />
                     <label htmlFor="floatingInputCustom">Location</label>
+                    {errors.location? <p className="text-danger"> {errors.location.message}</p>: ""} 
                 </Form.Floating>
                 <Form.Floating className="mb-3">
-                {errors.img1? <p className="text-danger"> errors.img1.message</p>: ""}
+                 
                     <Form.Control
                     id="floatingInputCustom"
                     type="url"
@@ -83,9 +104,10 @@ const FormVillages = () =>{
 
                     />
                     <label htmlFor="floatingInputCustom">Image1</label>
+                    {errors.img1? <p className="text-danger"> {errors.img1.message}</p>: ""} 
                 </Form.Floating>
                 <Form.Floating >
-                {errors.img2? <p className="text-danger"> errors.img2.message</p>: ""}
+              
                     <Form.Control
                     className="mb-3"
                     id="floatingimg2Custom"
@@ -97,7 +119,7 @@ const FormVillages = () =>{
                     <label htmlFor="floatingimg2Custom">Image2</label>
                 </Form.Floating>
                 <Form.Floating>
-                {errors.desc? <p className="text-danger">errors.desc.message</p>: ""}
+                
                     <Form.Control
                     className="mb-3"
                     id="floatingPasswordCustom"
@@ -108,9 +130,10 @@ const FormVillages = () =>{
 
                     />
                     <label htmlFor="floatingPasswordCustom">Desc</label>
+                    {errors.desc? <p className="text-danger">{errors.desc.message}</p>: ""} 
                 </Form.Floating>
                 <Form.Floating>
-                {errors.link1? <p className="text-danger">errors.link1.message</p>: ""}
+                 {errors.link1? <p className="text-danger">errors.link1.message</p>: ""} 
                     <Form.Control
                     className="mb-3"
                     id="floatingPasswordCustom"
@@ -123,7 +146,7 @@ const FormVillages = () =>{
                     <label htmlFor="floatingPasswordCustom">Link</label>
                 </Form.Floating>
                 <Form.Floating>
-                {errors.area? <p className="text-danger">errors.area.message</p>: ""}
+                 
                     <Form.Control
                     className="mb-3"
                     id="floatingPasswordCustom"
@@ -133,17 +156,23 @@ const FormVillages = () =>{
                     name="area"
                     />
                     <label htmlFor="floatingPasswordCustom">Area</label>
-
+                    {errors.area? <p className="text-danger">{errors.area.message}</p>: ""} 
                     <Form.Select aria-label="Default select example" className="mb-3" onChange={e=> setCitId(e.target.value)}
-    >                   {cities.map((city, index) => <option key={index} value={city._id} name="city">{city.name}</option>)}
+                    
+    >                   
+    {cities.map((city, index) => <option  key={index} value={city._id} name="city">{city.name}</option>)}
                        
                     </Form.Select>
                 </Form.Floating>
-                <Button variant="primary" type="submit">
+                <div className="d-grid gap-4">
+                    <Button style={{backgroundColor:"#6B9080",borderColor:"#6B9080"}} size="lg "  type="submit">
                     Create
                     </Button>
+                    </div>
             </Form>      
       </Row>
+      :<p>Login first</p>}
+      </div>
     ) 
 }
 

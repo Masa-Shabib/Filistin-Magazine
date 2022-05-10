@@ -34,7 +34,7 @@ module.exports.index = (request, response) => {
  module.exports.updateCity = (request, response) => {
     City.findOneAndUpdate({_id: request.params.id}, request.body, {new:true})
          .then(city => response.json(city))
-         .catch(err => response.json(err))
+         .catch(err => response.status(400).json(err))
  }
 
  module.exports.deleteCity = (request, response) => {

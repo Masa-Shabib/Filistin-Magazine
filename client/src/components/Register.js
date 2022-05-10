@@ -100,9 +100,12 @@ const Register = () =>{
                 <label htmlFor="floatingPasswordCustom">confirm Password</label>
                 {errors.confirmPassword?<p className="text-danger">{errors.confirmPassword.message}</p>:""}
             </Form.Floating>
-            <Button variant="primary" type="submit" style={{margin:"0 40%"}}>
+            <div className="d-grid gap-4">
+                    <Button style={{backgroundColor:"#6B9080",borderColor:"#6B9080"}} size="lg "  type="submit">
                     Register
-                </Button>
+                    </Button>
+                    </div>
+
           </Form>      
         </div>
     );

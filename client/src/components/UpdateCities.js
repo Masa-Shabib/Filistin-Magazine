@@ -3,8 +3,28 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { useNavigate, useParams } from 'react-router-dom';
 import { Form, Button, Row } from "react-bootstrap";
-
+import './style.css';
+import Header from "./Header";
 const UpdateCities = (props) =>{
+    const [loggedUser, setLoggedUser]= useState(null)
+    useEffect(()=>{
+        axios.get('http://localhost:8000/api/loggedUser', {withCredentials:true})
+        .then(res=>{console.log(res)
+          setLoggedUser(res.data.user)
+        })
+        .catch(err=>{console.log(err)
+            navigate("/Filistin")})
+      },[])
+      const logOut=()=>{
+        axios.get('http://localhost:8000/api/logout', {withCredentials:true})
+        .then(res=>{console.log(res)
+            navigate("/Filistin")
+        })
+        .catch(err=>console.log(err))
+      }
+
+
+
     const { id } = useParams();
     const [name, setName] = useState("");
     const [location, setLocation] = useState("");
@@ -19,7 +39,7 @@ const UpdateCities = (props) =>{
     const deleteCity = e =>{
         axios.delete('http://localhost:8000/api/city/' + id)
             .then(res=>{
-                navigate("/city");
+                navigate("/Filistin/cities");
             })
     }
     useEffect(() => {
@@ -49,25 +69,25 @@ const UpdateCities = (props) =>{
         })
         .then((res) => {
             console.log(res);
-            navigate("/city");
+            navigate("/Filistin/city/"+id);
           })
-        .catch(err=>{
-            const errorResponse = err.response.data.errors; // Get the errors from err.response.data
-            const errorArr = []; // Define a temp error array to push the messages in
-            for (const key of Object.keys(errorResponse)) { // Loop through all errors and get the messages
-                errorArr.push(errorResponse[key].message)
-            }
+          .catch(err=>{
+            console.log(err)
+            
             // Set Errors
-            setErrors(errorArr);
-        })            
+            setErrors(err.response.data.errors);
+        })    
     }
     return (
-        <Row className="justify-content-center">
-            <h1>Update City</h1>
+        <div>
+        {loggedUser?
+        <Row className="justify-content-center m-3">
+            <Header/>
+            <h1 >Update City</h1>
             <Form onSubmit={UpdateCities} className=" col-6 m-3 " >
-                {errors.map((err, index) => <p key={index}>{err}</p>)}
+            
                 <Form.Floating className="mb-3">
-                    {errors.firstName? <p className="text-danger"> errors.firstName.message</p>: ""}
+                    
                     <Form.Control
                         id="floatingInputCustom"
                         type="name"
@@ -76,6 +96,7 @@ const UpdateCities = (props) =>{
                         value={name}
                         onChange={(e) => { setName(e.target.value) }}/>
                         <label htmlFor="floatingInputCustom">Name</label>
+                        {errors.name? <p className="text-danger"> {errors.name.message}</p>: ""}
                 </Form.Floating>
                 <Form.Floating className="mb-3">
                 {errors.location? <p className="text-danger"> errors.location.message</p>: ""}
@@ -155,14 +176,19 @@ const UpdateCities = (props) =>{
                     />
                     <label htmlFor="floatingPasswordCustom">Area</label>
                 </Form.Floating>
-                <Button variant="primary" type="submit">
+                <div className="d-grid gap-4">
+                    <Button style={{backgroundColor:"#6B9080",borderColor:"#6B9080"}} size="lg "  type="submit">
                     Create
                     </Button>
-                    <Button onClick={deleteCity}>
-                        Delete
+                    <Button variant="secondary" size="lg" onClick={deleteCity}>
+                    Delete
                     </Button>
+                    </div>
+               
             </Form> 
-        </Row>         
+        </Row> 
+        :<p>Login first</p>}
+        </div>        
     )
 }
 

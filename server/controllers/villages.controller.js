@@ -35,7 +35,7 @@ const {Village}  = require('../models/villages.model');
  module.exports.updateVillage = (request, response) => {
     Village.findOneAndUpdate({_id: request.params.id}, request.body, {new:true})
          .then(village => response.json(village))
-         .catch(err => response.json(err))
+         .catch(err => response.status(400).json(err))
  }
 
  module.exports.deleteVillage = (request, response) => {
