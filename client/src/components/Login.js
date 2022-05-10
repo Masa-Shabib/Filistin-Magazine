@@ -34,7 +34,7 @@ const Login = () =>{
 
     return (
      <div>
-        <h2>Login</h2>
+        <h2 style={{margin:"40px 0 10px 0"}}>Login</h2>
         {errors?<p className="text-danger">{errors}</p>:""}
          <Form onSubmit={Login}>
             <Form.Floating className="mb-3">
@@ -60,9 +60,11 @@ const Login = () =>{
                 />
                 <label htmlFor="floatingPasswordCustom">Password</label>
             </Form.Floating>
-            <Button variant="primary" type="submit" style={{margin:"0 40%"}}>
-                    Login 
-                </Button>
+            <div className="d-grid gap-4">
+                    <Button style={{backgroundColor:"#6B9080",borderColor:"#6B9080"}} size="lg "  type="submit">
+                    Login
+                    </Button>
+                    </div>
           </Form>      
 
    </div>

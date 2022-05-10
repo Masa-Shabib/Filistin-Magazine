@@ -50,7 +50,7 @@ Item.propTypes = {
 
 
 
-const Test = () => {
+const VillageDetail = () => {
 
     const navigate = useNavigate();
     const [loggedUser, setLoggedUser]= useState(null)
@@ -71,19 +71,19 @@ const Test = () => {
   
 
   
-  const [city, setCity] = useState({})
-    const { id } = useParams();
-    const [villages, setVillages] = useState([])
+  const [village, setVillage] = useState({})
+    const { cid ,vid } = useParams();
+
     useEffect(() => {
-        axios.get('http://localhost:8000/api/city/' +id)
-            .then(res => setCity(res.data))
+        axios.get('http://localhost:8000/api/village/' +vid)
+            .then(res => setVillage(res.data))
             .catch(err => console.error(err));
-    }, [id]);
-    useEffect(() => {
-        axios.get('http://localhost:8000/api/village/city/' +id)
-            .then(res => setVillages(res.data))
-            .catch(err => console.error(err));
-    }, [id]);
+    }, [vid]);
+    // useEffect(() => {
+    //     axios.get('http://localhost:8000/api/village/city/' +id)
+    //         .then(res => setVillages(res.data))
+    //         .catch(err => console.error(err));
+    // }, [id]);
 
     return (
 <React.Fragment sx={{ padding:"0 0"}}>
@@ -91,94 +91,49 @@ const Test = () => {
     <Container minWidth="sm" maxWidth="lg" height='100vh' sx={{ padding:"0 0"}}>
         {/* City Name  */}
         <Header/>
-        <Box sx={{height:'10vh',mt:3, display: 'flex' ,justifyContent:"space-between",alignItems:"center"}}>
-            <h1>{city.name}</h1>
+        <Box sx={{height:'10vh',mt:3, display: 'flex' ,justifyContent:"space-between",alignItems:"center" }}>
+            <h1>{village.name}</h1>
+            <div>
+            <Button style={{backgroundColor:"#6B9080",borderColor:"#6B9080", height:"40px", padding:"5px",width:"70px",fontSize:"20px"}} size="sm "  onClick={e=>navigate("/Filistin/city/"+village.city)}>
+            Back
+                      </Button>
             {loggedUser?
-            <Button style={{backgroundColor:"#6B9080",borderColor:"#6B9080", height:"40px", padding:"5px",width:"70px",fontSize:"20px"}} size="sm "  onClick={e=>navigate("/Filistin/city/"+city._id+"/edit")}>
+            <Button style={{backgroundColor:"#6B9080",borderColor:"#6B9080", height:"40px", padding:"5px",width:"70px",fontSize:"20px",marginLeft:"10px"}} size="sm "  onClick={e=>navigate("/Filistin/village/"+village._id+"/edit")}>
             Edit
                       </Button>
-        
         :<p></p>}
+            </div>
         </Box>
         {/* description for specific city  */}
         <Box sx={{ bgcolor: 'grey', }}>
             <Box
             sx={{height: '40vh', display: 'flex', p: 1, bgcolor: '#F6FFF8'}}
         >
-            <img src={`${city.img1}`} style={{width:'65%',height:'100%',padding:"10px", borderRadius:'20px ',}}/>
-            <Item sx={{width:'32%',overflow:"auto",outline:'2px solid #6B9080',bgcolor: '#F6FFF8',fontSize:"18px", padding:"20px"}}>
-              <p style={{ display:'flex', flexDirection:'row'}}>Location: {city.location}</p>
-              <p style={{ display:'flex', flexDirection:'row'}}>Area: {city.area}</p>
-              <p>Extra link: <a href={city.link1}> More About {city.name}</a></p>
-              <p>Villages: {villages.map((village, index) =>
-              <span>{village.name} , </span>)}</p>
-              
+             <img src={`${village.img1}`} style={{width:'65%',height:'100%',padding:"10px"}}/>
+            <Item sx={{ flexGrow: 1,outline:'2px solid #6B9080',width:'30%' ,fontSize:"20px", padding:"20px",bgcolor: '#F6FFF8'}}>
+              <p style={{ display:'flex', flexDirection:'row'}}>Location:{village.location}</p>
+              <p style={{ display:'flex', flexDirection:'row'}}>Area:{village.area}</p>
+              <p><a href={village.link1}> Extra link</a></p>
               </Item>
-            
+           
         </Box>
             <Box
             sx={{height: '40vh', display: 'flex', p: 1, bgcolor: '#F6FFF8', borderRadius: 1,margin:"10px" }}
         >
-           
+            
             <Item sx={{width:'50%',overflow:"auto",outline:'2px solid #6B9080',bgcolor: '#F6FFF8',fontSize:"15px", padding:"20px"}}>
-              <p style={{ display:'flex', flexDirection:'row', fontSize:"20px"}}>Description</p>
-              <p style={{ display:'flex', flexDirection:'row'}}>{city.desc}</p>
+              <p style={{ display:'flex', flexDirection:'row'}}>{village.desc}</p>
               </Item>
-              <img style={{width:'50%',height:'100%',padding:"10px", borderRadius:'20px ',}} src={`${city.img2}`}/>
+              <img style={{width:'50%',height:'100%',padding:"10px"}} src={`${village.img2}`}/>
         </Box>
                 
             </Box>
         
 
         {/* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */}
-        <Box
-            sx={{
-                height: '30vh',
-                display: 'flex',
-                p: 1,
-                bgcolor: '#F6FFF8',
-                borderRadius: 1,
-                width:'100%', margin:"10px"
-            }}
-        >
-            <Item sx={{width:'95%',overflowX: 'scroll',bgcolor: '#F6FFF8', }}>
-                {/* images for villages */}
-                <div style={{ display:'flex', flexDirection:'row'}}>
-                {villages.map((village, index) =>
-                <div className='content'>
-                  
-                <img src={village.img1} alt="pic" onClick={e =>navigate("/Filistin/city/" + village.city +"/village/"+ village._id)}
-                style={{
-                    maxWidth:"250px",
-                    padding: 10,
-                    borderRadius:'40px ',
-                    height:'100%',
-                }}
-                /> 
-                <div className='overlay1' > 
-                <div style={{
-                  position:"relative",
-                  bottom:"50px",
-                    textAlign:"center",
-                    color:"white"
-                }} >
-                  <p style={{
-                
-                    textAlign:"center",
-                    
-                }}>{village.name}</p>
-                  </div>
-                  </div>
-                  </div> )}
 
-  
-                    
-                </div>
-
-                </Item>
-            
-        </Box>
-
+        {/* ////////////////////////////////////// */}
+        {/* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */}
 
         <Box
             sx={{
@@ -195,13 +150,21 @@ const Test = () => {
                     </Button>
             
         </Box>
-
+        {/* ////////////////////////////////////// */}
     </Container>
     </React.Fragment>
     )
 }
 
+// const city = {
+//     name : 'ramallah',
+//     location : 'palestine',
+//     img1 : 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
+//     img2 : 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
+//     description : "lorlorlor lorlo  rlorlorlorlorlo rlorlo rlorlorlo rlorlorlo rlorlorlorl orlorlorlo rlorlorlorlor lorlorlo rlorlor lorlorlo rlorlorlo rlorlorlo rlorlorlo rlorlorl orlorl orlorlorlo r lorlorlorl o rlorlorlorlorlor lorlorlorlo rlorlorlo rlorlorlor lorlorlor lorlorlor lorlorlo rlorlorlor lorlorlorlo rlorlorlor lorlorlorl orlorlorlo rlorlorlorlo rlorlorlo rlorlorlo rlorlorlorl orlorlorl orlorlor lorlorlor lorlorlorl orlorlor lorlorlo rlorlorlo rlorlorlo rlorlorl orlorlorl orlorlor lorlor lorlorlor lorlorlor lorlorl or",
+//     link1 : 'https://mui.com/system/shadows/',
+//     area : '19868',
+// }
 
 
-
-export default Test
+export default VillageDetail

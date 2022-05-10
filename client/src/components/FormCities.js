@@ -3,7 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Row } from "react-bootstrap";
-
+import './style.css';
+import Header from './Header';
 const FormCities = () =>{
     const [loggedUser, setLoggedUser]= useState(null)
     useEffect(()=>{
@@ -45,7 +46,7 @@ const FormCities = () =>{
             ...formInfo,
             [e.target.name]:e.target.value
         })
-    }
+    } 
     const onSubmitHandler = e =>{
         e.preventDefault();
         axios.post('http://localhost:8000/api/city', formInfo, {withCredentials:true})
@@ -64,7 +65,9 @@ const FormCities = () =>{
     return (
 
         <div>
+
         {loggedUser? <Row className="justify-content-center">
+        <Header/>
             <h1>Create City</h1>
             <Form onSubmit={onSubmitHandler} className=" col-6 m-3 " >
                 {/* {errors.map((err, index) => <p key={index}>{err}</p>)} */}
@@ -140,7 +143,7 @@ const FormCities = () =>{
                     <label htmlFor="floatingPasswordCustom">Link</label>
                 </Form.Floating>
                 <Form.Floating>
-                {errors.area? <p className="text-danger">errors.area.message</p>: ""}
+                
                     <Form.Control
                     className="mb-3"
                     id="floatingPasswordCustom"
@@ -151,10 +154,14 @@ const FormCities = () =>{
 
                     />
                     <label htmlFor="floatingPasswordCustom">Area</label>
+                    {errors.area? <p className="text-danger">{errors.area.message}</p>: ""}
                 </Form.Floating>
-                <Button variant="primary" type="submit">
+                <div className="d-grid gap-4">
+                    <Button style={{backgroundColor:"#6B9080",borderColor:"#6B9080"}} size="lg "  type="submit">
                     Create
                     </Button>
+                    </div>
+
             </Form> 
         </Row>         
         :<p>Login first</p>}

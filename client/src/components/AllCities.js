@@ -7,6 +7,7 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import { useNavigate } from "react-router-dom";
 import './AllCities.css';
 import axios from 'axios'
+import Header from './Header';
 const AllCities = () => {
   const [cities, setCities] = useState([])
   useEffect(() => {
@@ -17,7 +18,8 @@ const AllCities = () => {
     const navigate = useNavigate();
   return (
     <Container minWidth="sm" maxWidth="lg" >
-
+      <Header/>
+      <h1>Palestenian Cities</h1>
     <Box sx={{  height: '100vh'}}>
       <ImageList variant="masonry" cols={3} gap={18}>
         {cities.map((item) => (

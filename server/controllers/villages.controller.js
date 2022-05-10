@@ -6,7 +6,7 @@ const {Village}  = require('../models/villages.model');
     const cityId = request.params;
     id = cityId.id;
      const { name, location,img1, img2,desc,link1,area} = request.body;
-     addCity = City.findOne({_id:id})
+     addCity = City.findById(id)
      console.log(addCity)
      Village.create({
       name, location,img1, img2,desc,link1,area, city:id,
@@ -35,7 +35,7 @@ const {Village}  = require('../models/villages.model');
  module.exports.updateVillage = (request, response) => {
     Village.findOneAndUpdate({_id: request.params.id}, request.body, {new:true})
          .then(village => response.json(village))
-         .catch(err => response.json(err))
+         .catch(err => response.status(400).json(err))
  }
 
  module.exports.deleteVillage = (request, response) => {
@@ -43,3 +43,10 @@ const {Village}  = require('../models/villages.model');
          .then(deleteConfirmation => response.json(deleteConfirmation))
          .catch(err => response.json(err))
  }
+
+ module.exports.getVillageByCity = (request, response) => {
+   Village.find({city:request.params.id})
+        .then(villages => {console.log(villages)
+           response.json(villages)})
+        .catch(err => response.json(err))
+}
