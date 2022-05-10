@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Row } from "react-bootstrap";
-import './style.css';
+// import './style.css';
 import Header from './Header';
 const FormCities = () =>{
     const [loggedUser, setLoggedUser]= useState(null)

@@ -15,9 +15,9 @@ const Cover = (props) => {
   backgroundSize:"contain",backgroundRepeat:"no-repeat",height:"1090px"}}>
       
       <div className="text">
-        <div className="word">
+        <div className="word" style={{color:"#E6F3EB"}}>
           <span>F</span>
-          <span>i</span>
+          <span>i</span> 
           <span>l</span>
           <span>i</span>
           <span>s</span>
@@ -25,10 +25,10 @@ const Cover = (props) => {
           <span>i</span>
           <span>n</span>
         </div>
-        <p>Palestenian Magazine</p>
+        <p style={{color:"#C9DECF"}}>Palestenian Magazine</p>
       </div>
 
-      <div className="name"><strong > F</strong>ilistine</div>
+      <div className="name"> Filistine</div>
 
       <div className="bottomnav">
         <ul>

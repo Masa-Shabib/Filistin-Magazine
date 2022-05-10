@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { useNavigate, useParams } from 'react-router-dom';
 import { Form, Button, Row } from "react-bootstrap";
-import './style.css';
+// import './style.css';
 import Header from "./Header";
 const UpdateCities = (props) =>{
     const [loggedUser, setLoggedUser]= useState(null)
@@ -178,7 +178,7 @@ const UpdateCities = (props) =>{
                 </Form.Floating>
                 <div className="d-grid gap-4">
                     <Button style={{backgroundColor:"#6B9080",borderColor:"#6B9080"}} size="lg "  type="submit">
-                    Create
+                    Update
                     </Button>
                     <Button variant="secondary" size="lg" onClick={deleteCity}>
                     Delete

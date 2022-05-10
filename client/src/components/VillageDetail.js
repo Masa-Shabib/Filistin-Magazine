@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios'
 import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import './style.css';
+// import './style.css';
 import {  Button } from "react-bootstrap";
 import Header from './Header';
 function Item(props) {
@@ -109,7 +109,7 @@ const VillageDetail = () => {
             <Box
             sx={{height: '40vh', display: 'flex', p: 1, bgcolor: '#F6FFF8'}}
         >
-             <img src={`${village.img1}`} style={{width:'65%',height:'100%',padding:"10px"}}/>
+             <img className='immmage' src={`${village.img1}`} style={{width:'65%',height:'100%',padding:"10px", borderRadius:'20px ',}}/>
             <Item sx={{ flexGrow: 1,outline:'2px solid #6B9080',width:'30%' ,fontSize:"20px", padding:"20px",bgcolor: '#F6FFF8'}}>
               <p style={{ display:'flex', flexDirection:'row'}}>Location:{village.location}</p>
               <p style={{ display:'flex', flexDirection:'row'}}>Area:{village.area}</p>
@@ -124,7 +124,7 @@ const VillageDetail = () => {
             <Item sx={{width:'50%',overflow:"auto",outline:'2px solid #6B9080',bgcolor: '#F6FFF8',fontSize:"15px", padding:"20px"}}>
               <p style={{ display:'flex', flexDirection:'row'}}>{village.desc}</p>
               </Item>
-              <img style={{width:'50%',height:'100%',padding:"10px"}} src={`${village.img2}`}/>
+              <img className='immmage' style={{width:'50%',height:'100%',padding:"10px", borderRadius:'20px ',}} src={`${village.img2}`}/>
         </Box>
                 
             </Box>

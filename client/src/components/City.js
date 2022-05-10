@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import './style.css';
 import {  Button } from "react-bootstrap";
 import Header from './Header';
+import Main from '../views/Main';
 function Item(props) {
   
 
@@ -105,7 +106,7 @@ const Test = () => {
             <Box
             sx={{height: '40vh', display: 'flex', p: 1, bgcolor: '#F6FFF8'}}
         >
-            <img src={`${city.img1}`} style={{width:'65%',height:'100%',padding:"10px", borderRadius:'20px ',}}/>
+            <img className='immmage' src={`${city.img1}`} style={{width:'65%',height:'100%',padding:"10px", borderRadius:'20px ',}}/>
             <Item sx={{width:'32%',overflow:"auto",outline:'2px solid #6B9080',bgcolor: '#F6FFF8',fontSize:"18px", padding:"20px"}}>
               <p style={{ display:'flex', flexDirection:'row'}}>Location: {city.location}</p>
               <p style={{ display:'flex', flexDirection:'row'}}>Area: {city.area}</p>
@@ -124,7 +125,7 @@ const Test = () => {
               <p style={{ display:'flex', flexDirection:'row', fontSize:"20px"}}>Description</p>
               <p style={{ display:'flex', flexDirection:'row'}}>{city.desc}</p>
               </Item>
-              <img style={{width:'50%',height:'100%',padding:"10px", borderRadius:'20px ',}} src={`${city.img2}`}/>
+              <img className='immmage' style={{width:'50%',height:'100%',padding:"10px", borderRadius:'20px ',}} src={`${city.img2}`}/>
         </Box>
                 
             </Box>
@@ -141,13 +142,16 @@ const Test = () => {
                 width:'100%', margin:"10px"
             }}
         >
-            <Item sx={{width:'95%',overflowX: 'scroll',bgcolor: '#F6FFF8', }}>
+          <Item sx={{width:'40%',overflowX: 'scroll',bgcolor: '#F6FFF8',padding:"10px" }}>
+                  <Main/>
+                  </Item>
+            <Item sx={{width:'80%',overflowX: 'scroll',bgcolor: '#F6FFF8', }}>
                 {/* images for villages */}
                 <div style={{ display:'flex', flexDirection:'row'}}>
                 {villages.map((village, index) =>
                 <div className='content'>
                   
-                <img src={village.img1} alt="pic" onClick={e =>navigate("/Filistin/city/" + village.city +"/village/"+ village._id)}
+                <img className='immmage' src={village.img1} alt="pic" onClick={e =>navigate("/Filistin/city/" + village.city +"/village/"+ village._id)}
                 style={{
                     maxWidth:"250px",
                     padding: 10,
@@ -176,6 +180,7 @@ const Test = () => {
                 </div>
 
                 </Item>
+                
             
         </Box>
 

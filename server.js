@@ -32,11 +32,11 @@ io.on("connection", socket => {
         console.log(data);
         console.log(data.sender);
         console.log(data.message);
-        io.emit("message-from-server", { "msgData": data });
+        io.emit("weclome-from-server", data);
     })
-
+    
     socket.on("new-client-msg", (data) => {
-        console.log(data);
+        console.log("new message: "+data);
         io.emit("message-from-server", data);
     })
 })

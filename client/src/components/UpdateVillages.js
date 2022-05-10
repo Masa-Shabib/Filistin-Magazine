@@ -179,7 +179,7 @@ const UpdateCities = (props) =>{
                 </Form.Floating>
                 <div className="d-grid gap-4">
                     <Button style={{backgroundColor:"#6B9080",borderColor:"#6B9080"}} size="lg "  type="submit">
-                    Create
+                    Update
                     </Button>
                     <Button variant="secondary" size="lg" onClick={deleteVillage}>
                     Delete

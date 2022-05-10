@@ -23,12 +23,16 @@
   
   .info {
     text-align: center;
-    position: relative;
-    bottom: 120px;
+    width: 57%;
+    position: absolute;
+    bottom: 8px;
+ 
     background: #ccdfd5;
     padding: 0 10px;
   }
-  
+  .info ul {
+    text-align: center;
+  }
   .info ul li {
     display: inline-block;
     padding: 20px 25px;
@@ -115,14 +119,19 @@
   }
   
   .name {
-    position: relative;
-    top: 500px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 750px;
+ 
     font-size: 90px;
     font-family: 'Raiderfont';
     text-transform: uppercase;
     color: transparent;
-    -webkit-text-stroke: 2px rgb(221, 219, 219);
+    -webkit-text-stroke: 2px rgb(211, 227, 219);
+    transform: translateY(100vh);
+   animation: fall 8s forwards;
   }
+ 
   .name strong{
     font-size: 100px;
     letter-spacing: 10px;
@@ -132,19 +141,28 @@
     -webkit-text-stroke: 2px rgb(27, 62, 25);
   }
 .bottomnav{
-  position: relative;
-    top: 60px;
-    left:60PX ;
+    position: absolute;
+    transform: translate(-100%,-100%);
+    top: 550px;
+    right: 23%;
+    text-align: center;
+
+  animation: slide 10s forwards;
+}
+@keyframes slide {
+  100% {
+    transform: translateY(0);
+  }
 }
 .bottomnav ul li:hover{
   cursor: pointer;
 }
   .bottomnav ul li {
-
+   
     margin-right: 70px;
     margin-top: 50px;
     text-align: right;
-    color: rgb(30, 49, 32);
+    color: white;
     text-transform: uppercase;
     letter-spacing: 15px;
     margin-top: 20px;
@@ -157,7 +175,7 @@
   .bottomnav ul li:nth-child(2)::before {
     content: "";
     display: inline-block;
-    border: 1px solid rgb(27, 41, 27);
+    border: 1px solid rgb(227, 229, 227);
     width: 65px;
     margin: 0 10px 0 -78px;
     transform: translateY(-3px);
