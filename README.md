@@ -29,7 +29,7 @@ Mongoose
 
 
 ## Functionality ?
-The website will target two types of users, Hikers “Guests” who are looking for information about trails, and Clients “Hikes Organizers” who create hiking trips for hikers “Guests” to join. Spring  Security was used to specify the access and authorization rights for each user of the website.An external API was integrated into the website to determine the starting and ending points for each trail to provide the user with additional details about the trails.
+The website will target two types of users, Documenters that will document Palestine cities and villages, and Readers who are willing to get to know more about Palestine. Registering was used to specify the access and authorization rights for users of the website.Socket was used to create some kind of live chat between the readers of the magazine.
 
 
 ## About us ? 
@@ -40,4 +40,5 @@ Palestine is facing so we can show the world what is real Palestine.
 
 ![screen_3](readme_img/03.JPG)
 
-Designed and maintained By: __Mohammad Omair,  Mubarak Mubarak,  Masa Shabib__
+Designed and maintained By: __Masa Shabib, Rafat Darawshe, Abdelhadi Numan, Mahmoud Aleassa__
+
