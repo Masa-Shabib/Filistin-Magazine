@@ -1,7 +1,7 @@
 Hi There !! 
 This is our very first Mern project and we are very proud about it.
 
-# Masar
+# Filistin
 ## What is Filistin ?
 This web application is an online 
 magazine that will help to document Palestinian Cities and Villages and allow the world 
