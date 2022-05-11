@@ -155,7 +155,7 @@ const FormVillages = () =>{
                     onChange={changehandler}       
                     name="area"
                     />
-                    <label htmlFor="floatingPasswordCustom">Area</label>
+                    <label htmlFor="floatingPasswordCustom">Population</label>
                     {errors.area? <p className="text-danger">{errors.area.message}</p>: ""} 
                     <Form.Select aria-label="Default select example" className="mb-3" onChange={e=> setCitId(e.target.value)}
                     

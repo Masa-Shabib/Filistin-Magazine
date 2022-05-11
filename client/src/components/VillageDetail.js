@@ -112,7 +112,7 @@ const VillageDetail = () => {
              <img className='immmage' src={`${village.img1}`} style={{width:'65%',height:'100%',padding:"10px", borderRadius:'20px ',}}/>
             <Item sx={{ flexGrow: 1,outline:'2px solid #6B9080',width:'30%' ,fontSize:"20px", padding:"20px",bgcolor: '#F6FFF8'}}>
               <p style={{ display:'flex', flexDirection:'row'}}>Location:{village.location}</p>
-              <p style={{ display:'flex', flexDirection:'row'}}>Area:{village.area}</p>
+              <p style={{ display:'flex', flexDirection:'row'}}>Population:{village.area}</p>
               <p><a href={village.link1}> Extra link</a></p>
               </Item>
            

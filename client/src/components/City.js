@@ -109,7 +109,7 @@ const Test = () => {
             <img className='immmage' src={`${city.img1}`} style={{width:'65%',height:'100%',padding:"10px", borderRadius:'20px ',}}/>
             <Item sx={{width:'32%',overflow:"auto",outline:'2px solid #6B9080',bgcolor: '#F6FFF8',fontSize:"18px", padding:"20px"}}>
               <p style={{ display:'flex', flexDirection:'row'}}>Location: {city.location}</p>
-              <p style={{ display:'flex', flexDirection:'row'}}>Area: {city.area}</p>
+              <p style={{ display:'flex', flexDirection:'row'}}>Population: {city.area}</p>
               <p>Extra link: <a href={city.link1}> More About {city.name}</a></p>
               <p>Villages: {villages.map((village, index) =>
               <span>{village.name} , </span>)}</p>

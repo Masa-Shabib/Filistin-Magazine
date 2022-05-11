@@ -174,7 +174,7 @@ const UpdateCities = (props) =>{
                     name="area"
 
                     />
-                    <label htmlFor="floatingPasswordCustom">Area</label>
+                    <label htmlFor="floatingPasswordCustom">Population</label>
                 </Form.Floating>
                 <div className="d-grid gap-4">
                     <Button style={{backgroundColor:"#6B9080",borderColor:"#6B9080"}} size="lg "  type="submit">

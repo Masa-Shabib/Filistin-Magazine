@@ -153,7 +153,7 @@ const FormCities = () =>{
                     name="area"
 
                     />
-                    <label htmlFor="floatingPasswordCustom">Area</label>
+                    <label htmlFor="floatingPasswordCustom">Population</label>
                     {errors.area? <p className="text-danger">{errors.area.message}</p>: ""}
                 </Form.Floating>
                 <div className="d-grid gap-4">
