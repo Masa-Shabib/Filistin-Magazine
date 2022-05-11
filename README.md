@@ -1,22 +1,23 @@
 Hi There !! 
-This is our very first Java project and we are very proud about it.
+This is our very first Mern project and we are very proud about it.
 
 # Masar
-## What is Masar ?
-Masar is built to enrich our lives and enlarge our understanding of Palestinian history,
-while creating for us a sense of continuity through outdoor trips to historical landmarks which strengthens
-the roots of Palestinian identity, through observing the beauty of nature in our beloved holy homeland.
+## What is Filistin ?
+This web application is an online 
+magazine that will help to document Palestinian Cities and Villages and allow the world 
+to get to know more about Palestine. We got motivated to create this magazine because of the situation that
+Palestine is facing so we can show the world what is real Palestine. 
 
 ![masar_logo](readme_img/03.JPG)
 
 ## Programing Languages, Frameworks and Libraries used:
-HTML, CSS, Java, JavaScript, STS , Spring Security, BootStrap , Trello, GitHub, Jquery, Google Map API.
+HTML, CSS, Mern, JavaScript, Mern Auth, BootStrap , Trello, GitHub, MATERIAL UI, Socket. 
 
 ## Deployment Server:
 Amazon Web Srvices
 
 ## Data Base:
-SQLITE3
+Mongoose
 
 ## Some Screenshots of the Website: 
 ![screen_one](readme_img/01.JPG)
