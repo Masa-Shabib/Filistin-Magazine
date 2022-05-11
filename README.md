@@ -25,6 +25,8 @@ Mongoose
 ![screen_Four](readme_img/04.JPG)
 ![screen_Five](readme_img/05.JPG)
 ![screen_Six](readme_img/06.JPG)
+![screen_7](readme_img/07.JPG)
+![screen_8](readme_img/08.JPG)
 
 
 ## Functionality ?
