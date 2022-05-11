@@ -11,7 +11,7 @@ Palestine is facing so we can show the world what is real Palestine.
 ![masar_logo](readme_img/01.JPG)
 
 ## Programing Languages, Frameworks and Libraries used:
-HTML, CSS, Mern, JavaScript, Mern Auth, BootStrap , Trello, GitHub, MATERIAL UI, Socket. 
+HTML, CSS, Mern,ReactJS, ExpressJS JavaScript, Mern Auth, BootStrap , Trello, GitHub, MATERIAL UI, Socket. 
 
 ## Deployment Server:
 Amazon Web Srvices
