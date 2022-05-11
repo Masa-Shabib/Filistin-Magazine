@@ -33,6 +33,11 @@ The website will target two types of users, Hikers “Guests” who are looking 
 
 
 ## About us ? 
-This Website was designed by three enthusiastic junior Web-Devlopers, The idea of the website was initiated from the need of stimulating tourism on both local and national domains, therefore encouraging people to know the story and history of palestine, our application is the voice of Palestine,reminding people from all over the world that once upon a time free souls has lived here, held their ground and defended their identities.
+This web application is an online 
+magazine that will help to document Palestinian Cities and Villages and allow the world 
+to get to know more about Palestine. We got motivated to create this magazine because of the situation that
+Palestine is facing so we can show the world what is real Palestine.
+
+![screen_3](readme_img/03.JPG)
 
 Designed and maintained By: __Mohammad Omair,  Mubarak Mubarak,  Masa Shabib__
