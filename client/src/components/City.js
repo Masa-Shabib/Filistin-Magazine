@@ -147,13 +147,14 @@ const Test = () => {
                   </Item>
             <Item sx={{width:'80%',overflowX: 'scroll',bgcolor: '#F6FFF8', }}>
                 {/* images for villages */}
+                <h3>{city.name} Villages</h3>
                 <div style={{ display:'flex', flexDirection:'row'}}>
                 {villages.map((village, index) =>
                 <div className='content'>
                   
                 <img className='immmage' src={village.img1} alt="pic" onClick={e =>navigate("/Filistin/city/" + village.city +"/village/"+ village._id)}
                 style={{
-                    maxWidth:"250px",
+                    maxWidth:"200px",
                     padding: 10,
                     borderRadius:'40px ',
                     height:'100%',
